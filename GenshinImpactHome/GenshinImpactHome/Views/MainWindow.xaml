@@ -7,41 +7,13 @@
 
         Title="MainWindow" Height="720" Width="1330">
     <Window.Resources>
-        <Style x:Key="menuButton" TargetType="RadioButton">
-            <!--Normal button style-->
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Margin" Value="-5,0,0,5"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RadioButton">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderThickness="4,0,0,0"
-                                BorderBrush="{TemplateBinding BorderBrush}">
-                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <!--Button Style on hover-->
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Margin" Value="0,0,0,5"/>
-                    <Setter Property="Background" Value="PaleTurquoise"/>
-                    <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
-                </Trigger>
-
-                <!--Activated button style-->
-                <Trigger Property="IsChecked" Value="True">
-                    <Setter Property="Margin" Value="0,0,0,5"/>
-                    <Setter Property="Background" Value="LightGray"/>
-                    <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
-                    <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+       <Style x:Key="menuTitle" TargetType="TextBlock">
+           <Style.Setters>
+               <Setter Property="Margin" Value="15,0,0,0"></Setter>
+               <Setter Property="Foreground" Value="White"></Setter>
+               <Setter Property="FontSize" Value="24"></Setter>
+           </Style.Setters>
+       </Style>
     </Window.Resources>
     <Border>
         <Border.Background>
@@ -59,9 +31,7 @@
                     <RadioButton Style="{StaticResource menuButton}">
                         <StackPanel Orientation="Horizontal"
                                     Margin="30,10,0,10">
-                            <TextBlock Text="蒙德成"
-                                       Foreground="White"
-                                       FontSize="24"
+                            <TextBlock Text="蒙德成" Style="{StaticResource menuTitle}"
                                        FontWeight="SemiBold" />
                         </StackPanel>
                     </RadioButton>
@@ -69,8 +39,7 @@
                         <StackPanel Orientation="Horizontal"
                                     Margin="30,10,0,10">
                             <TextBlock Text="璃玥港"
-                                       Foreground="White"
-                                       FontSize="24"
+                                       Style="{StaticResource menuTitle}"
                                        FontWeight="SemiBold" />
                         </StackPanel>
                     </RadioButton>
@@ -78,8 +47,7 @@
                         <StackPanel Orientation="Horizontal"
                                     Margin="30,10,0,10">
                             <TextBlock Text="稻妻城"
-                                       Foreground="White"
-                                       FontSize="24"
+                                       Style="{StaticResource menuTitle}"
                                        FontWeight="SemiBold" />
                         </StackPanel>
                     </RadioButton>
@@ -87,8 +55,7 @@
                         <StackPanel Orientation="Horizontal"
                                     Margin="30,10,0,10">
                             <TextBlock Text="须弥城"
-                                       Foreground="White"
-                                       FontSize="24"
+                                       Style="{StaticResource menuTitle}"
                                        FontWeight="SemiBold" />
                         </StackPanel>
                     </RadioButton>
@@ -96,8 +63,7 @@
                         <StackPanel Orientation="Horizontal"
                                     Margin="30,10,0,10">
                             <TextBlock Text="枫丹延"
-                                       Foreground="White"
-                                       FontSize="24"
+                                       Style="{StaticResource menuTitle}"
                                        FontWeight="SemiBold" />
                         </StackPanel>
                     </RadioButton>
@@ -105,8 +71,7 @@
                         <StackPanel Orientation="Horizontal"
                                     Margin="30,10,0,10">
                             <TextBlock Text="纳塔"
-                                       Foreground="White"
-                                       FontSize="24"
+                                       Style="{StaticResource menuTitle}"
                                        FontWeight="SemiBold" />
                         </StackPanel>
                     </RadioButton>
@@ -114,15 +79,47 @@
                         <StackPanel Orientation="Horizontal"
                                     Margin="30,10,0,10">
                             <TextBlock Text="敬请期待"
-                                       Foreground="White"
-                                       FontSize="24"
+                                       Style="{StaticResource menuTitle}"
                                        FontWeight="SemiBold" />
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>
             </Border>
 
-            <Border Grid.Column="1" />
+          
+                <Grid   Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="500"></RowDefinition>
+                        <RowDefinition Height="160"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Width="980" ></TextBlock>
+                        <Button Content="-" Width="40"></Button>
+                        <Button Content="X" Width="40" Margin="5,0,0,0"></Button>
+                    </StackPanel>
+
+                <Border Grid.Row="2" Margin="0,0,0,30"   >
+                       <StackPanel Orientation="Horizontal" Margin="30,0,0,0" >
+                           <Button Style="{DynamicResource btnLeft}" Width="100">
+                               
+                           </Button>
+                           <ListBox Width="800" Background="Transparent">
+                               <ListBox.ItemsPanel>
+                                   <ItemsPanelTemplate>
+                                       <StackPanel Orientation="Horizontal" />
+                                   </ItemsPanelTemplate>
+                               </ListBox.ItemsPanel>
+                           </ListBox>
+
+                        <Button Style="{StaticResource btnRight}" Width="100"></Button>
+                       </StackPanel>
+                    </Border>
+                    
+                    
+                </Grid>
+          
 
         </Grid>
     </Border>
