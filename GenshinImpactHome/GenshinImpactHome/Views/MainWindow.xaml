@@ -3,9 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:model="clr-namespace:GenshinImpactHome.Models"
+          xmlns:vm="clr-namespace:GenshinImpactHome.ViewModels"
         mc:Ignorable="d"
 
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="720" Width="1330">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
     <Window.Resources>
        <Style x:Key="menuTitle" TargetType="TextBlock">
            <Style.Setters>
@@ -17,7 +23,7 @@
     </Window.Resources>
     <Border>
         <Border.Background>
-            <ImageBrush ImageSource="https://uploadstatic.mihoyo.com/contentweb/20200211/2020021114220951905.jpg"
+            <ImageBrush ImageSource="{Binding BgImg}"
                         Stretch="UniformToFill" />
         </Border.Background>
         <Grid>
@@ -27,15 +33,28 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0" BorderThickness="0,0,2 ,0" BorderBrush="LightGray">
+                <!--<ListBox  VerticalAlignment="Center" ItemsSource="{Binding Citys}" Background="Transparent" Opacity="0.85">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton Style="{StaticResource menuButton}" GroupName="{Binding sTitle}">
+                                <StackPanel Orientation="Horizontal"
+                                    Margin="30,10,0,10">
+                                    <TextBlock Text="{Binding sTitle}" Style="{StaticResource menuTitle}"
+                                     FontWeight="SemiBold" />
+                                </StackPanel>
+                            </RadioButton>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>-->
                 <StackPanel VerticalAlignment="Center" Opacity="0.85">
-                    <RadioButton Style="{StaticResource menuButton}">
+                    <RadioButton Style="{StaticResource menuButton}" >
                         <StackPanel Orientation="Horizontal"
                                     Margin="30,10,0,10">
                             <TextBlock Text="蒙德成" Style="{StaticResource menuTitle}"
                                        FontWeight="SemiBold" />
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Style="{StaticResource menuButton}">
+                    <RadioButton Style="{StaticResource menuButton}"  >
                         <StackPanel Orientation="Horizontal"
                                     Margin="30,10,0,10">
                             <TextBlock Text="璃玥港"
@@ -96,8 +115,8 @@
                     
                     <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal">
                         <TextBlock Width="980" ></TextBlock>
-                        <Button Content="-" Width="40"></Button>
-                        <Button Content="X" Width="40" Margin="5,0,0,0"></Button>
+                        <!--<Button Content="-" Width="40"></Button>
+                        <Button Content="X" Width="40" Margin="5,0,0,0"></Button>-->
                     </StackPanel>
 
                 <Border Grid.Row="2" Margin="0,0,0,30"   >
@@ -105,12 +124,22 @@
                            <Button Style="{DynamicResource btnLeft}" Width="100">
                                
                            </Button>
-                           <ListBox Width="800" Background="Transparent">
+                        <ListBox Width="800"  ItemsSource="{Binding Citys}" Foreground="Black" FontWeight="Bold" Background="Transparent">
                                <ListBox.ItemsPanel>
                                    <ItemsPanelTemplate>
-                                       <StackPanel Orientation="Horizontal" />
-                                   </ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" >                                         
+
+                                        </StackPanel>
+                                    </ItemsPanelTemplate>
                                </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Background="Transparent">
+                                        <Image Source="/Img/123.pmg" Width="50" Height="40" />
+                                        <TextBlock Text="{Binding sTitle}"  />
+                                    </StackPanel>
+                                </DataTemplate>                            
+                            </ListBox.ItemTemplate>
                            </ListBox>
 
                         <Button Style="{StaticResource btnRight}" Width="100"></Button>

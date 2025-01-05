@@ -15,10 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ViewModels\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Page Update="Views\MainWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
         <XamlRuntime>Wpf</XamlRuntime>
@@ -27,7 +23,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Imgs\123.png" />
       <None Remove="Imgs\btnBg.png" />
+      <Resource Include="Imgs\123.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
       <Resource Include="Imgs\btnBg.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
